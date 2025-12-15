@@ -17,16 +17,15 @@ vi, vim, emacs
 
 # REQUIREMENTS #
 
--Your code should use the Betty style
--Your shell should not have any memory leaks
--No more than 5 functions per file
--All your header files should be include guarded
--Use system calls only when you need to
+1. Your code should use the Betty style
+2. Your shell should not have any memory leaks
+3. No more than 5 functions per file
+4. All your header files should be include guarded
+5. Use system calls only when you need to
 
 # OUTPUT #
 
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
-
 The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
 
 Example of error with sh:
