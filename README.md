@@ -12,20 +12,21 @@ vi, vim, emacs
 
 # DEVELOPPEMENT ENVIRONMENT #
 
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
-All your files should end with a new line
+-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+-All your files should end with a new line
 
 # REQUIREMENTS #
 
-Your code should use the Betty style
-Your shell should not have any memory leaks
-No more than 5 functions per file
-All your header files should be include guarded
-Use system calls only when you need to
+-Your code should use the Betty style
+-Your shell should not have any memory leaks
+-No more than 5 functions per file
+-All your header files should be include guarded
+-Use system calls only when you need to
 
 # OUTPUT #
 
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
+
 The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
 
 Example of error with sh:
