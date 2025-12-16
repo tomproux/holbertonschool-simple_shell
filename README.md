@@ -123,3 +123,11 @@ write (man 2 write)
     gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 # TESTING #
+
+
+
+# AUTHOR #
+
+@tomproux
+
+@denis12306
