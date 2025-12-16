@@ -13,10 +13,11 @@ SYNOPSIS
 DESCRIPTION
 
       The sh utility is the standard command interpreter for the system.
-      This man	page is	 not  intended to be a tutorial	nor a complete specification of	the shell.
+      This man page is not intended to be a tutorial nor a complete specification of the shell.
 
 EXEMPLES
 
+      Execute a shell command
       mkdir (Make Directory)
       Syntaxe: mkdir $\langle$dir1$\rangle$$\langle$dir2$\rangle$ ...$\langle$dirN$\rangle$
       Example: mkdir /tmp/test will create the directory test in /tmp. 
@@ -53,7 +54,7 @@ CAVEATS
 
 HISTORY
 
-      A sh command, the Thompson shell, appeared in Version 1 AT&T UNIX. It was superseded in Version 7 AT&T	UNIX by	the Bourne shell, which	inherited the	name sh.
+      A sh command, the Thompson shell, appeared in Version 1 AT&T UNIX. It was superseded in Version 7 AT&T UNIX by the Bourne shell, which inherited the name sh.
       This  version  of  sh was rewritten in 1989 under the BSD license after the Bourne shell from AT&T System V Release 4 UNIX and  first  appeared in 4.3BSD Net/2.
 
 BUGS
