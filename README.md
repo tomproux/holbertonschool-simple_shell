@@ -4,7 +4,7 @@ Simple Shell
 
 # DESCRIPTION #
 
-
+The project consist to create a little shell with different fonctionality from several version of it
 
 # ALLOWED EDITORS #
 
