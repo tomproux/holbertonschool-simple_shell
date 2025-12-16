@@ -130,4 +130,4 @@ write (man 2 write)
 
 @ Tom Proux : https://github.com/tomproux
 
-@ Denis Gavaux : https://github.com/Denis12306
+@ Denis Gavaud : https://github.com/Denis12306
