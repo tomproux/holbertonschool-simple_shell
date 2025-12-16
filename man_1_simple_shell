@@ -22,6 +22,13 @@ Example: mkdir /tmp/test will create the directory test in /tmp.
 cd : Change the current directory
 cp : Copy one or many files or directory
 ls : Display informations on files or directory
+mv : Move one or many files towards other files or directory
+rm : Remove file(s)
+mkdir : Make new directory
+rmdir : Remove empty directory
+man : Display the manuel for the given command
+more : Display 
+
 
 # DEFAULT BEHAVIOR #
 
