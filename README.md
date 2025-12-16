@@ -4,7 +4,7 @@ Simple Shell
 
 # DESCRIPTION #
 
-
+The project consist to create a little shell with different fonctionality from several version of it
 
 # ALLOWED EDITORS #
 
@@ -123,3 +123,11 @@ write (man 2 write)
     gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 # TESTING #
+
+
+
+# AUTHOR #
+
+@ Tom Proux : https://github.com/tomproux
+
+@ Denis Gavaud : https://github.com/Denis12306
