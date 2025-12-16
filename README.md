@@ -128,6 +128,6 @@ write (man 2 write)
 
 # AUTHOR #
 
-@tomproux
+@ Tom Proux : https://github.com/tomproux
 
-@denis12306
+@ Denis Gavaux : 
