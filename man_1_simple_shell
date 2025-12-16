@@ -11,23 +11,23 @@ sh
 The sh utility is the standard command interpreter for the system.
 This man	page is	 not  intended to be a tutorial	nor a complete specification of	the shell.
 
-# EXEMPLES #
+  # EXEMPLES #
 
-mkdir (Make Directory)
-Syntaxe: mkdir $\langle$dir1$\rangle$$\langle$dir2$\rangle$ ...$\langle$dirN$\rangle$
-Example: mkdir /tmp/test will create the directory test in /tmp. 
+  mkdir (Make Directory)
+  Syntaxe: mkdir $\langle$dir1$\rangle$$\langle$dir2$\rangle$ ...$\langle$dirN$\rangle$
+  Example: mkdir /tmp/test will create the directory test in /tmp. 
 
-# OVERVIEW #
+  # OVERVIEW #
 
-cd : Change the current directory
-cp : Copy one or many files or directory
-ls : Display informations on files or directory
-mv : Move one or many files towards other files or directory
-rm : Remove file(s)
-mkdir : Make new directory
-rmdir : Remove empty directory
-man : Display the manuel for the given command
-more : Display 
+  cd : Change the current directory
+  cp : Copy one or many files or directory
+  ls : Display informations on files or directory
+  mv : Move one or many files towards other files or directory
+  rm : Remove file(s)
+  mkdir : Make new directory
+  rmdir : Remove empty directory
+  man : Display the manuel for the given command
+  more : Display 
 
 
 # DEFAULT BEHAVIOR #
