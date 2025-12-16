@@ -1,22 +1,27 @@
 # NAME #
 
-
+Simple shell Unix Interpreter (sh, bash, csh)
 
 # SYNOPSIS #
 
-
+sh
 
 # DESCRIPTION #
 
-
+The sh utility is the standard command interpreter for the system.
+This man	page is	 not  intended to be a tutorial	nor a complete specification of	the shell.
 
 # EXEMPLES #
 
-
+mkdir (Make Directory)
+Syntaxe: mkdir $\langle$dir1$\rangle$$\langle$dir2$\rangle$ ...$\langle$dirN$\rangle$
+Example: mkdir /tmp/test will create the directory test in /tmp. 
 
 # OVERVIEW #
 
-
+cd : Change the current directory
+cp : Copy one or many files or directory
+ls : Display informations on files or directory
 
 # DEFAULT BEHAVIOR #
 
