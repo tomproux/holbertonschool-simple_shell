@@ -1,0 +1,26 @@
+#include "shell.h"
+/**
+ * a function to create the ls function
+ * 
+ * Return nothing
+ */
+int ls_function(void)
+{
+    DIR *dir;
+    struct dirent *entry;
+
+    dir = opendir(".");
+    if (dir == NULL)
+    {
+        perror("opendir");
+        return (1);
+    }
+
+    while ((entry = readdir(dir)) != NULL)
+    {
+        printf("%s\n", entry->d_name);
+    }
+
+    closedir(dir);
+    return (0);
+}
