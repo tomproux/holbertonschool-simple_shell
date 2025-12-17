@@ -118,6 +118,10 @@ wait4 (man 2 wait4)
 
 write (man 2 write)
 
+# FLOWCHART # 
+
+<img width="2613" height="1532" alt="mermaid-diagram-2025-12-16-160545" src="https://github.com/user-attachments/assets/318c4ed7-5a5b-4c2b-b49d-5fd117b7da8c" />
+
 # COMPILATION #
 
     gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
