@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <dirent.h>
 /**
  * a function to create the ls function
  * 
