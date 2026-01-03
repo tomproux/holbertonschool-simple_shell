@@ -30,20 +30,29 @@ char *read_input(void)
 /**
  * parse_line - a function that parse the line in an array
  * Cut the line and take the first argument 
- * Return the 
+ * Return the number of argument
  */
 char **parse_line(char *line)
 {
     char **argv = malloc(sizeof(char *) * 2);
+    char *token;
 
     if (!argv)
         return (NULL);
 
-    argv[0] = strtok(line, " \n");
+    token = strtok(line, " \n");
+    if (token == NULL)
+    {
+        free(argv);
+        return (NULL);
+    }
+
+    argv[0] = strdup(token);
     argv[1] = NULL;
 
     return (argv);
 }
+
 /**
  * handle_builtins - a function that handle the builtins
  * 
@@ -62,9 +71,27 @@ int handle_builtins(char **argv)
  */
 void execute_command(char **argv)
 {
-    pid_t pid = fork();
+    pid_t pid;
+    char *cmd_path;
+
+    pid = fork();
 
     if (pid == 0)
-        execve(argv[0], argv, NULL);
-    wait(NULL);
+    {
+        cmd_path = find_command_path(argv[0]);
+        if (!cmd_path)
+        {
+            write(STDERR_FILENO, "command not found\n", 18);
+            exit(127);
+        }
+
+        execve(cmd_path, argv, NULL);
+        perror("hsh");
+        free(cmd_path);
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        wait(NULL);
+    }
 }
