@@ -11,29 +11,32 @@ int main(void)
 
     while (1)
     {
-    if (interactive)
-    display_prompt();
+        if (interactive)
+            display_prompt();
 
-    line = read_input();
-    if (line == NULL)
-    break;
+        line = read_input();
+        if (line == NULL)
+            break;
 
-    argv = parse_line(line);
-    if (argv == NULL || argv[0] == NULL)
-    {
-    free(line);
-    free(argv);
-    continue;
-    }
+        argv = parse_line(line);
+        if (argv == NULL || argv[0] == NULL)
+        {
+            free(line);
+            free_argv(argv);
+            continue;
+        }
 
-    if(handle_builtins(argv))
-    {
+        if (handle_builtins(argv))
+        {
+            free(line);
+            free_argv(argv);
+            continue;
+        }
+
+        execute_command(argv);
+
         free(line);
-        free(argv);
-        continue;
+        free_argv(argv);
     }
-    execute_command(argv);
-    free(line);
-    free(argv);
-    }
+    return (0);
 }

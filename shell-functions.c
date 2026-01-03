@@ -25,3 +25,18 @@ int ls_function(void)
     closedir(dir);
     return (0);
 }
+
+void free_argv(char **argv)
+{
+    int i = 0;
+
+    if (!argv)
+        return;
+
+    while (argv[i])
+    {
+        free(argv[i]);
+        i++;
+    }
+    free(argv);
+}
