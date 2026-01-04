@@ -28,32 +28,6 @@ char *read_input(void)
 }
 
 /**
- * parse_line - a function that parse the line in an array
- * Cut the line and take the first argument 
- * Return the number of argument
- */
-char **parse_line(char *line)
-{
-    char **argv = malloc(sizeof(char *) * 2);
-    char *token;
-
-    if (!argv)
-        return (NULL);
-
-    token = strtok(line, " \n");
-    if (token == NULL)
-    {
-        free(argv);
-        return (NULL);
-    }
-
-    argv[0] = strdup(token);
-    argv[1] = NULL;
-
-    return (argv);
-}
-
-/**
  * handle_builtins - a function that handle the builtins
  * 
  */
