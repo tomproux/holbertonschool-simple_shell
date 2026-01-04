@@ -29,12 +29,30 @@ char *read_input(void)
 
 /**
  * handle_builtins - a function that handle the builtins
- * 
+ * @i : an input integer
+ * Return nothing
  */
 int handle_builtins(char **argv)
 {
+    int i = 0;
+
+    if (!argv || !argv[0])
+        return (0);
+
     if (strcmp(argv[0], "exit") == 0)
         exit(0);
+
+    if (strcmp(argv[0], "env") == 0)
+    {
+        while (environ[i])
+        {
+            write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+            write(STDOUT_FILENO, "\n", 1);
+            i++;
+        }
+        return (1);
+    }
+
     return (0);
 }
 
