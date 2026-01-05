@@ -232,10 +232,8 @@ int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
-/* shell-functions.c */
 int main(void);
 void free_argv(char **argv);
-int ls_function(void);
 void display_prompt(void);
 char *read_input(void);
 char **parse_line(char *line);
