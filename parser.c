@@ -1,3 +1,4 @@
+#include "shell.h"
 /**
  * parse_line - a function that parse the line in an array
  * Cut the line and take the argument 
