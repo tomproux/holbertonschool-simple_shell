@@ -21,7 +21,10 @@ int fork(void)
 */
 void execve(char **path, char **argv, char **env)
 {
+    if (path != NULL && argv != NULL && env != NULL)
+    {
 
+    }
 }
 
 /*
