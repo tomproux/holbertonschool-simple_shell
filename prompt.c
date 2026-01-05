@@ -28,39 +28,31 @@ char *read_input(void)
 }
 
 /**
- * parse_line - a function that parse the line in an array
- * Cut the line and take the first argument 
- * Return the number of argument
- */
-char **parse_line(char *line)
-{
-    char **argv = malloc(sizeof(char *) * 2);
-    char *token;
-
-    if (!argv)
-        return (NULL);
-
-    token = strtok(line, " \n");
-    if (token == NULL)
-    {
-        free(argv);
-        return (NULL);
-    }
-
-    argv[0] = strdup(token);
-    argv[1] = NULL;
-
-    return (argv);
-}
-
-/**
  * handle_builtins - a function that handle the builtins
- * 
+ * @i : an input integer
+ * Return nothing
  */
 int handle_builtins(char **argv)
 {
+    int i = 0;
+
+    if (!argv || !argv[0])
+        return (0);
+
     if (strcmp(argv[0], "exit") == 0)
         exit(0);
+
+    if (strcmp(argv[0], "env") == 0)
+    {
+        while (environ[i])
+        {
+            write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+            write(STDOUT_FILENO, "\n", 1);
+            i++;
+        }
+        return (1);
+    }
+
     return (0);
 }
 
