@@ -58,7 +58,8 @@ int handle_builtins(char **argv)
 
 /**
  * execute_command - a function that execute an external command
- * @pid_t : is the parent identification  
+ * @pid_t: is the parent identification
+ * @cmd_path: is the path command  
  * Return nothing
  */
 void execute_command(char **argv)

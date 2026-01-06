@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _strcmp - A funtion that compares two strings
  * @s1: string 1
@@ -22,18 +21,29 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * strdup - a function that duplicate a string
- * 
- * 
+ * @dst: the copy of the string
+ * @i: the input integer to go through the string
+ * Return dst (destination copy)
  */
-char *strdup(const char *src)
+char *_strdup(const char *src)
 {
-    char *dst = malloc(strlen (src) + 1);
+    char *dst;
+    int i, len = 0;
 
+    if (src == NULL)
+        return (NULL);
+
+    while (src[len])
+        len++;
+
+    dst = malloc(len + 1);
     if (dst == NULL)
-        return NULL;
-        
-    strcpy(dst, src);
-    return dst;
+        return (NULL);
+
+    for (i = 0; i <= len; i++)
+        dst[i] = src[i];
+
+    return (dst);
 }
 
 /**
