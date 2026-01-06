@@ -241,6 +241,5 @@ int handle_builtins(char **argv);
 void execute_command(char **argv);
 char *find_command_path(char *command);
 int sortie(void);
-int atoi(const char *str);
 
 #endif
