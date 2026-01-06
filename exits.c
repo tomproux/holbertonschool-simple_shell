@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
-* main- a function that allow the exit function
+* sortie - a function that allow the exit function
 * return: Always 0 (SUCCESS)
 */
 int sortie(void)
