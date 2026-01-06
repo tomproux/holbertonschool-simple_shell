@@ -132,20 +132,13 @@ int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
 /* toem_string.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
 
 /* toem_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
 /* toem_exits.c */
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
 /* toem_tokenizer.c */
@@ -164,7 +157,6 @@ int bfree(void **);
 int interactive(info_t *);
 int is_delim(char, char *);
 int _isalpha(int);
-int _atoi(char *);
 
 /* toem_errors1.c */
 int _erratoi(char *);
@@ -241,5 +233,11 @@ int handle_builtins(char **argv);
 void execute_command(char **argv);
 char *find_command_path(char *command);
 int sortie(void);
+int _atoi(char *s);
+int _strcmp(char *s1, char *s2);
+char *strdup(const char *src);
+unsigned int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 
 #endif
