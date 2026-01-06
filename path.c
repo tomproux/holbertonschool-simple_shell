@@ -1,7 +1,9 @@
 #include "shell.h"
 /**
- * find_command_path - a function that search the path
- * 
+ * find_command_path - a function that search the complete path of a function
+ * @path: value of the environnement variable
+ * @path_copy: copy of path
+ * @dir: the different directory
  * 
  */
 char *find_command_path(char *command)
