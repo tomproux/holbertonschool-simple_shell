@@ -2,27 +2,41 @@
 /**
  * parse_line - a function that parse the line in an array
  * Cut the line and take the argument 
+ * @temp: pointer to secure argv
+ * @token: the input command
+ * @i: the input integer to go through the array
  * Return the argument
  */
 char **parse_line(char *line)
 {
     char **argv = NULL;
-    char *token = NULL;
+    char **tmp;
+    char *token;
     int i = 0;
 
-    token = strtok(line, " \n");
-    if (token == NULL)
+    if (!line)
         return (NULL);
 
-    while (token != NULL)
+    token = strtok(line, " \n");
+    if (!token)
+        return (NULL);
+
+    while (token)
     {
-        argv = realloc(argv, sizeof(char *) * (i + 2));
-        if (!argv)
+        tmp = realloc(argv, sizeof(char *) * (i + 2));
+        if (!tmp)
+        {
+            free_args(argv);
             return (NULL);
+        }
+        argv = tmp;
 
         argv[i] = strdup(token);
         if (!argv[i])
+        {
+            free_args(argv);
             return (NULL);
+        }
 
         i++;
         token = strtok(NULL, " \n");
@@ -30,24 +44,4 @@ char **parse_line(char *line)
 
     argv[i] = NULL;
     return (argv);
-}
-
-/**
- * free_argv - a function that free the allocated memory
- * @i : the input integer
- * Return nothing
- */
-void free_argv(char **argv)
-{
-    int i = 0;
-
-    if (!argv)
-        return;
-
-    while (argv[i])
-    {
-        free(argv[i]);
-        i++;
-    }
-    free(argv);
 }

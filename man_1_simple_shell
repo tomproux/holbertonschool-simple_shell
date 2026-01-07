@@ -8,11 +8,13 @@ LIBRARY
 
 SYNOPSIS
 
-      sh
+      sh - End of the first trimester to Holberton school Laval.
 
 DESCRIPTION
 
-      The sh utility is the standard command interpreter for the system.
+      This program simulate a command interpreter based in Unix and GNU/LINUX with its basic commands, through a terminal emulator and some executable instructions (shell scripts) the user can interact with.
+      This simple-shell is not supossed to be an exact imitation of the original Unix Shell.
+      This doesn't cover all of the instructions the original does.
       This man page is not intended to be a tutorial nor a complete specification of the shell.
 
 EXEMPLES
@@ -24,6 +26,7 @@ EXEMPLES
 
 OVERVIEW
 
+      This program is made to complete the team project in C - Simple Shell.
       cd : Change the current directory
       cp : Copy one or many files or directory
       ls : Display informations on files or directory
@@ -38,17 +41,27 @@ OVERVIEW
       grep : Display all the lines in the file corresponding to the given expression (search)
 
 
-RETURN VALUE
+FEATURES
 
-      Upon successful return, these functions return the nothing
+      This program displays a prompt and wait for the user to type a command. A command line always ends with a new line (when user push ENTER key).
+      The prompt is displayed again each time a command has been executed.
+      When the user enters exit, the shell will end.
+      The user could stop the program using Ctrl+D (end of file).
+      The shell handles command lines with arguments and pathways.
+      The program prints the current enviroment when the user types env.
+      This program executes the most common shell commands as ls, grep, find, pwd, rm, cp, mv, exit, env, history, etc... with arguments.
+      If an executable cannot be found, It prints an error message and display the prompt again.
+      The Shell does NOT support wildcard characters such as ls *.dat in parameters (or commands). 
+      This shell does NOT support pipes |, shell logical operators as && or ||, neither commands separator ;.
 
 ERRORS
 
-ATTRIBUTES
+      No unknow errors.
+
 
 STANDARDS
 
-CAVEATS
+      POSIX
 
 HISTORY
 
@@ -56,3 +69,5 @@ HISTORY
       This  version  of  sh was rewritten in 1989 under the BSD license after the Bourne shell from AT&T System V Release 4 UNIX and  first  appeared in 4.3BSD Net/2.
 
 BUGS
+
+      No unknow bugs.

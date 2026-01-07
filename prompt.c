@@ -1,14 +1,5 @@
 #include "shell.h"
 /**
- * display_prompt - a function that display a prompt
- * Return nothing
- */
-void display_prompt(void)
-{
-    write(STDOUT_FILENO, "$ ", 2);
-}
-
-/**
  * read_input - a function that allow us to put argument in input
  * @*line : a pointer on the line
  * @size_t : the lenght of the string
@@ -35,6 +26,7 @@ char *read_input(void)
 int handle_builtins(char **argv)
 {
     int i = 0;
+    extern char **environ;
 
     if (!argv || !argv[0])
         return (0);
@@ -58,7 +50,8 @@ int handle_builtins(char **argv)
 
 /**
  * execute_command - a function that execute an external command
- * @pid_t : is the parent identification  
+ * @pid_t: is the parent identification
+ * @cmd_path: is the path command  
  * Return nothing
  */
 void execute_command(char **argv)
@@ -86,4 +79,23 @@ void execute_command(char **argv)
     {
         wait(NULL);
     }
+}
+
+/**
+ * _EOF - A function that checks if the buffer is EOF
+ * @buffer: The pointer to the input string.
+ * Return: Nothing
+ */
+void _EOF(char *buffer)
+{
+	if (buffer)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
+
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	free(buffer);
+	exit(EXIT_SUCCESS);
 }

@@ -8,17 +8,20 @@
  */
 char *find_command_path(char *command)
 {
-    char *path, *path_copy, *dir;
+    char *path_env, *path_copy, *dir;
     char *full_path;
 
     if (access(command, X_OK) == 0)
-        return (strdup(command));
+        return strdup(command); /* chemin direct */
 
-    path = getenv("PATH");
-    if (!path)
-        return (NULL);
+    path_env = getenv("PATH");
+    if (!path_env)
+        return NULL;
 
-    path_copy = strdup(path);
+    path_copy = strdup(path_env);
+    if (!path_copy)
+        return NULL;
+
     dir = strtok(path_copy, ":");
 
     while (dir)
@@ -32,7 +35,7 @@ char *find_command_path(char *command)
         if (access(full_path, X_OK) == 0)
         {
             free(path_copy);
-            return (full_path);
+            return full_path;
         }
 
         free(full_path);
@@ -40,5 +43,5 @@ char *find_command_path(char *command)
     }
 
     free(path_copy);
-    return (NULL);
+    return NULL;
 }

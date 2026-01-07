@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * _strcmp - A funtion that compares two strings
  * @s1: string 1
@@ -18,22 +17,6 @@ int _strcmp(char *s1, char *s2)
 	}
 
 	return (1);
-}
-
-/**
- * strdup - a function that duplicate a string
- * 
- * 
- */
-char *strdup(const char *src)
-{
-    char *dst = malloc(strlen (src) + 1);
-
-    if (dst == NULL)
-        return NULL;
-        
-    strcpy(dst, src);
-    return dst;
 }
 
 /**
@@ -84,4 +67,36 @@ char *_strcat(char *dest, char *src)
 	while (*src)
 		*dest++ = *src++;
 	return (temp);
+}
+
+/**
+ * _atoi - a function that convert a string to an integer
+ * @i: the input to go through the string
+ * @sign: the positive or negative sign
+ * Return an integer
+ */
+int _atoi(char *s)
+{
+	int i = 0;
+	int sign = 1;
+	int result = 0;
+
+	if (s == NULL)
+		return (0);
+
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (s[i] == '+')
+	{
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		result = result * 10 + (s[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
