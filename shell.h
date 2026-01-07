@@ -226,6 +226,7 @@ int replace_string(char **, char *);
 
 int main(void);
 void free_argv(char **argv);
+void free_args(char **argv);
 void display_prompt(void);
 char *read_input(void);
 char **parse_line(char *line);

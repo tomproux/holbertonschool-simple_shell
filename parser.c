@@ -31,7 +31,7 @@ char **parse_line(char *line)
         }
         argv = tmp;
 
-        argv[i] = _strdup(token);
+        argv[i] = strdup(token);
         if (!argv[i])
         {
             free_args(argv);
