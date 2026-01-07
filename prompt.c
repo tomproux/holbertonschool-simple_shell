@@ -1,11 +1,60 @@
 #include "shell.h"
 /**
- * display_prompt - a function that display a prompt
+ * display_prompt - a function that display and execute a prompt
  * Return nothing
  */
-void display_prompt(void)
+int main(void)
 {
-    write(STDOUT_FILENO, "$ ", 2);
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t nread;
+    pid_t pid;
+    int status;
+    char *argv[2];
+
+    while (1)
+    {
+        write(STDOUT_FILENO, "$ ", 2);
+
+        nread = getline(&line, &len, stdin);
+
+        if (nread == -1)
+        {
+            write(STDOUT_FILENO, "\n", 1);
+            break;
+        }
+
+        if (nread > 0 && line[nread - 1] == '\n')
+            line[nread - 1] = '\0';
+
+        if (line[0] == '\0')
+            continue;
+
+        pid = fork();
+        if (pid == -1)
+        {
+            perror("fork");
+            continue;
+        }
+
+        if (pid == 0)
+        {
+            argv[0] = line;
+            argv[1] = NULL;
+
+            execve(line, argv, NULL);
+
+            perror("./simple_shell");
+            exit(EXIT_FAILURE);
+        }
+        else
+        {
+            wait(&status);
+        }
+    }
+
+    free(line);
+    return 0;
 }
 
 /**
@@ -35,6 +84,7 @@ char *read_input(void)
 int handle_builtins(char **argv)
 {
     int i = 0;
+    extern char **environ;
 
     if (!argv || !argv[0])
         return (0);
@@ -87,4 +137,23 @@ void execute_command(char **argv)
     {
         wait(NULL);
     }
+}
+
+/**
+ * _EOF - A function that checks if the buffer is EOF
+ * @buffer: The pointer to the input string.
+ * Return: Nothing
+ */
+void _EOF(char *buffer)
+{
+	if (buffer)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
+
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	free(buffer);
+	exit(EXIT_SUCCESS);
 }
