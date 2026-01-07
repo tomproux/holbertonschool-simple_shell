@@ -28,11 +28,11 @@ void shell_exit(char **command)
 
 	if (command[1] == NULL)
 	{
-		free_dp(command);
+		free(command);
 		exit(EXIT_SUCCESS);
 	}
 
 	sta_tus = _atoi(command[1]);
-	free_dp(command);
+	free(command);
 	exit(sta_tus);
 }
