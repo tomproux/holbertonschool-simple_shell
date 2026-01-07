@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * creation of the shell
+ * main - a function that display a prompt
  * Return nothing
  */
 int main(void)
@@ -39,4 +39,13 @@ int main(void)
         free_argv(argv);
     }
     return (0);
+}
+
+/**
+ * prompt - A function that prints the prompt
+ * Return: Nothing.
+ */
+void display_prompt(void)
+{
+    write(STDOUT_FILENO, "$ ", 2);
 }

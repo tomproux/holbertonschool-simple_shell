@@ -15,33 +15,36 @@ int sortie(void)
 }
 
 /**
- * _atoi - a function that convert a string to an integer
- * @i: the input to go through the string
- * @sign: the positive or negative sign
- * Return an integer
+ * free_argv - a function that free the allocated memory
+ * @i : the input integer
+ * Return nothing
  */
-int _atoi(char *s)
+void free_argv(char **argv)
 {
-	int i = 0;
-	int sign = 1;
-	int result = 0;
+    int i = 0;
 
-	if (s == NULL)
-		return (0);
+    if (!argv)
+        return;
 
-	if (s[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (s[i] == '+')
-	{
-		i++;
-	}
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		result = result * 10 + (s[i] - '0');
-		i++;
-	}
-	return (result * sign);
+    while (argv[i])
+    {
+        free(argv[i]);
+        i++;
+    }
+    free(argv);
+}
+
+/**
+ * free_argv - a function that free the allocated memory
+ * @i : the input integer
+ * Return nothing
+ */
+void free_args(char **argv)
+{
+    int i = 0;
+    if (!argv)
+        return;
+    while (argv[i])
+        free(argv[i++]);
+    free(argv);
 }

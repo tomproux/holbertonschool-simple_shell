@@ -24,7 +24,7 @@ void print_env(char **env)
  */
 void shell_exit(char **command)
 {
-	int sta_tus = 0;
+	int status = 0;
 
 	if (command[1] == NULL)
 	{
@@ -32,7 +32,7 @@ void shell_exit(char **command)
 		exit(EXIT_SUCCESS);
 	}
 
-	sta_tus = _atoi(command[1]);
+	status = _atoi(command[1]);
 	free(command);
-	exit(sta_tus);
+	exit(status);
 }

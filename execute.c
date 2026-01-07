@@ -1,52 +1,52 @@
 #include "shell.h"
-
-/*
-* fork- permet de créer un processus fils
-* return: Always 0 (SUCCESS)
-*/
-int fork(void)
+/**
+ * execute_cmd - execute a command
+ * @argv: an array (argv[0] = command, argv[1..] = args)
+ *
+ * Return: 0 on sucess, -1 if error
+ */
+int execute_cmd(char **argv)
 {
-    int pidChild;
+    pid_t pid;
+    int status;
 
-    if (pidChild != 0)
+    if (argv == NULL || argv[0] == NULL)
+        return (-1);
+
+    if (handle_builtins(argv))
+        return (0);
+
+    pid = fork();
+    if (pid == -1)
     {
-        pidChild = getpid();
+        perror("fork");
+        return (-1);
     }
 
-    return (pidChild); 
-}
-
-/*
-* execve-
-*/
-void execve(char **path, char **argv, char **env)
-{
-    if (path != NULL && argv != NULL && env != NULL)
+    if (pid == 0)
     {
-
-    }
-}
-
-/*
-* wait- permet d'attentre un autre processus
-* return: pid and status of the child
-*/
-int **wait(void)
-{
-    int **infoChild;
-    int i;
-
-    for (i = 0; i < 2; i++)
-    {
-        if (i == 0)
+        char *path = find_command_path(argv[0]);
+        if (!path)
         {
-            infoChild[i] = getpid();
+            fprintf(stderr, "%s: command not found\n", argv[0]);
+            exit(127);
         }
-        else if(i == 1)
+
+        execve(path, argv, environ);
+        perror("execve");
+        exit(1);
+    }
+    else
+    {
+        if (waitpid(pid, &status, 0) == -1)
         {
-            infoChild[i] = getstatus();
+            perror("waitpid");
+            return (-1);
         }
+
+        if (WIFEXITED(status))
+            return WEXITSTATUS(status);
     }
 
-    return infoChild;
+    return (0);
 }

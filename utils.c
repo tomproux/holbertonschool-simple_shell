@@ -20,33 +20,6 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * strdup - a function that duplicate a string
- * @dst: the copy of the string
- * @i: the input integer to go through the string
- * Return dst (destination copy)
- */
-char *_strdup(const char *src)
-{
-    char *dst;
-    int i, len = 0;
-
-    if (src == NULL)
-        return (NULL);
-
-    while (src[len])
-        len++;
-
-    dst = malloc(len + 1);
-    if (dst == NULL)
-        return (NULL);
-
-    for (i = 0; i <= len; i++)
-        dst[i] = src[i];
-
-    return (dst);
-}
-
-/**
  * _strlen - A function that finds the length of the string
  * @s: The input string
  * Return: The length of the string
@@ -94,4 +67,36 @@ char *_strcat(char *dest, char *src)
 	while (*src)
 		*dest++ = *src++;
 	return (temp);
+}
+
+/**
+ * _atoi - a function that convert a string to an integer
+ * @i: the input to go through the string
+ * @sign: the positive or negative sign
+ * Return an integer
+ */
+int _atoi(char *s)
+{
+	int i = 0;
+	int sign = 1;
+	int result = 0;
+
+	if (s == NULL)
+		return (0);
+
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (s[i] == '+')
+	{
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		result = result * 10 + (s[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
