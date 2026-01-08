@@ -16,23 +16,3 @@ void print_env(char **env)
 		i++;
 	}
 }
-
-/**
- * shell_exit - A function that exits the shell.
- * @command: The pointer to tokenized command.
- * Return: Nothing.
- */
-void shell_exit(char **command)
-{
-	int status = 0;
-
-	if (command[1] == NULL)
-	{
-		free(command);
-		exit(EXIT_SUCCESS);
-	}
-
-	status = _atoi(command[1]);
-	free(command);
-	exit(status);
-}

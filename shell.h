@@ -19,6 +19,7 @@ void display_prompt(void);
 char *read_input(void);
 char **parse_line(char *line);
 void print_env(char **env);
+char *_getenv(const char *name);
 int handle_builtins(char **argv);
 void execute_command(char **argv);
 char *find_command_path(char *command);
