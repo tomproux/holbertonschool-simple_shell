@@ -1,19 +1,26 @@
 #include "shell.h"
 /**
-* sortie - a function that allow the exit function
-* return: Always 0 (SUCCESS)
-*/
-int sortie(char *cmd)
+ * shell_exit - A function that exits the shell.
+ * @command: The pointer to tokenized command.
+ * Return: Nothing.
+ */
+int shell_exit(char **cmd)
 {
-	if( cmd == NULL)
-        return(0);
+    int status = 0;
 
-	if (strcmp(cmd, "exit") == 0)
-	{
-		exit(EXIT_SUCCESS);
-	}
-	return(0);
+    if (!cmd || !cmd[0])
+        return 0;
+
+    if (strcmp(cmd[0], "exit") != 0)
+        return 0;
+
+    if (cmd[1])
+        status = _atoi(cmd[1]);
+
+    free_args(cmd);
+    exit(status);
 }
+
 
 /**
  * free_argv - a function that free the allocated memory

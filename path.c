@@ -14,7 +14,7 @@ char *find_command_path(char *command)
     if (access(command, X_OK) == 0)
         return strdup(command);
 
-    path_env = getenv("PATH");
+    path_env = _getenv("PATH");
     if (!path_env)
         return NULL;
 
@@ -46,7 +46,34 @@ char *find_command_path(char *command)
     return NULL;
 }
 
+/**
+ * _getenv - a function that look for a environnement variable
+ */
+char *_getenv(const char *name)
+{
+    int i;
+    size_t len;
+
+    if (!name || !environ)
+        return NULL;
+
+    len = strlen(name);
+
+    for (i = 0; environ[i]; i++)
+    {
+        if (strncmp(environ[i], name, len) == 0
+            && environ[i][len] == '=')
+        {
+            return (environ[i] + len + 1);
+        }
+    }
+    return NULL;
+}
+
+/**
+ * _getPATH - a function that give the path environnement variable
+ */
 char *_getPATH(void)
 {
-    return (getenv("PATH"));
+    return _getenv("PATH");
 }
