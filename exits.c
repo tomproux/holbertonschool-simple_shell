@@ -3,9 +3,10 @@
 * sortie - a function that allow the exit function
 * return: Always 0 (SUCCESS)
 */
-int sortie(void)
+int sortie(char *cmd)
 {
-	char *cmd = "";
+	if( cmd == NULL)
+        return(0);
 
 	if (strcmp(cmd, "exit") == 0)
 	{
