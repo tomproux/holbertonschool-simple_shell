@@ -49,39 +49,6 @@ int handle_builtins(char **argv)
 }
 
 /**
- * execute_command - a function that execute an external command
- * @pid_t: is the parent identification
- * @cmd_path: is the path command  
- * Return nothing
- */
-void execute_command(char **argv)
-{
-    pid_t pid;
-    char *cmd_path;
-
-    pid = fork();
-
-    if (pid == 0)
-    {
-        cmd_path = find_command_path(argv[0]);
-        if (!cmd_path)
-        {
-            write(STDERR_FILENO, "command not found\n", 18);
-            exit(127);
-        }
-
-        execve(cmd_path, argv, NULL);
-        perror("hsh");
-        free(cmd_path);
-        exit(EXIT_FAILURE);
-    }
-    else
-    {
-        wait(NULL);
-    }
-}
-
-/**
  * _EOF - A function that checks if the buffer is EOF
  * @buffer: The pointer to the input string.
  * Return: Nothing

@@ -1,52 +1,42 @@
 #include "shell.h"
 /**
- * execute_cmd - execute a command
- * @argv: an array (argv[0] = command, argv[1..] = args)
- *
- * Return: 0 on sucess, -1 if error
+ * execute_command - a function that execute an external command
+ * @pid_t: is the parent identification
+ * @cmd_path: is the path command  
+ * Return nothing
  */
-int execute_cmd(char **argv)
+int execute_command(char **argv)
 {
     pid_t pid;
     int status;
+    char *cmd_path;
 
-    if (argv == NULL || argv[0] == NULL)
-        return (-1);
+    if (!argv || !argv[0])
+        return 0;
 
     if (handle_builtins(argv))
-        return (0);
+        return 0;
+
+    cmd_path = find_command_path(argv[0]);
+    if (!cmd_path)
+    {
+        fprintf(stderr, "%s: command not found\n", argv[0]);
+        return 127;
+    }
 
     pid = fork();
-    if (pid == -1)
-    {
-        perror("fork");
-        return (-1);
-    }
-
     if (pid == 0)
     {
-        char *path = _getPATH();
-        if (!path)
-        {
-            fprintf(stderr, "%s: command not found\n", argv[0]);
-            exit(127);
-        }
-
-        execve(path, argv, environ);
+        execve(cmd_path, argv, environ);
         perror("execve");
-        exit(1);
-    }
-    else
-    {
-        if (waitpid(pid, &status, 0) == -1)
-        {
-            perror("waitpid");
-            return (-1);
-        }
-
-        if (WIFEXITED(status))
-            return WEXITSTATUS(status);
+        exit(EXIT_FAILURE);
     }
 
-    return (0);
+    waitpid(pid, &status, 0);
+    free(cmd_path);
+
+    if (WIFEXITED(status))
+        return WEXITSTATUS(status);
+
+    return 1;
 }
