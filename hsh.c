@@ -1,7 +1,10 @@
 #include "shell.h"
 /**
- * main - a function that display a prompt
- * Return nothing
+ * main - a function which is the main loop of the shell
+ * @line: is the command line
+ * @argv: is the array of argument for the command
+ * @interactive: is the interactive mode of the shell
+ * Return: always 0.
  */
 int main(void)
 {
@@ -42,7 +45,7 @@ int main(void)
 }
 
 /**
- * prompt - A function that prints the prompt
+ * prompt - A function that display the prompt
  * Return: Nothing.
  */
 void display_prompt(void)
