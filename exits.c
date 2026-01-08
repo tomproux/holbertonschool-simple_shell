@@ -6,21 +6,15 @@
  */
 int shell_exit(char **cmd)
 {
-    int status = 0;
-
     if (!cmd || !cmd[0])
         return 0;
 
     if (strcmp(cmd[0], "exit") != 0)
         return 0;
 
-    if (cmd[1])
-        status = _atoi(cmd[1]);
-
     free_args(cmd);
-    exit(status);
+    exit(EXIT_SUCCESS);
 }
-
 
 /**
  * free_argv - a function that free the allocated memory
