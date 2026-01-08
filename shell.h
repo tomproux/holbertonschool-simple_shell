@@ -23,7 +23,7 @@ int handle_builtins(char **argv);
 void execute_command(char **argv);
 char *find_command_path(char *command);
 char *_getPATH(void);
-int sortie(void);
+int sortie(char *cmd);
 int _atoi(char *s);
 int _strcmp(char *s1, char *s2);
 char *strdup(const char *src);
