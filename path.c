@@ -1,47 +1,26 @@
 #include "shell.h"
 /**
- * find_command_path - a function that search the complete path of a function
- * @path: value of the environnement variable
- * @path_copy: copy of path
- * @dir: the different directory
- * 
+ * _getPATH - A function to gets the full value from.
+ * enviromental variable PATH.
+ * @env: The pointer to enviromental variables.
+ * Return: All tokenized pathways for commands.
  */
-char *find_command_path(char *command)
+char **_getPATH(char **env)
 {
-    char *path_env, *path_copy, *dir;
-    char *full_path;
+	char *pathvalue = NULL, **pathways = NULL;
+	unsigned int i = 0;
 
-    if (access(command, X_OK) == 0)
-        return strdup(command); /* chemin direct */
-
-    path_env = getenv("PATH");
-    if (!path_env)
-        return NULL;
-
-    path_copy = strdup(path_env);
-    if (!path_copy)
-        return NULL;
-
-    dir = strtok(path_copy, ":");
-
-    while (dir)
-    {
-        full_path = malloc(strlen(dir) + strlen(command) + 2);
-        if (!full_path)
-            break;
-
-        sprintf(full_path, "%s/%s", dir, command);
-
-        if (access(full_path, X_OK) == 0)
-        {
-            free(path_copy);
-            return full_path;
-        }
-
-        free(full_path);
-        dir = strtok(NULL, ":");
-    }
-
-    free(path_copy);
-    return NULL;
+	pathvalue = strtok(env[i], "=");
+	while (env[i])
+	{
+		if (_strcmp(pathvalue, "PATH"))
+		{
+			pathvalue = strtok(NULL, "\n");
+			pathways = tokening(pathvalue, ":");
+			return (pathways);
+		}
+		i++;
+		pathvalue = strtok(env[i], "=");
+	}
+	return (NULL);
 }
