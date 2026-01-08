@@ -9,39 +9,47 @@
  */
 char **parse_line(char *line)
 {
-    char **argv = NULL;
-    char **tmp;
+    char **argv;
     char *token;
+    int count = 0;
     int i = 0;
+    char *copy;
 
     if (!line)
-        return (NULL);
+        return NULL;
 
-    token = strtok(line, " \n");
-    if (!token)
-        return (NULL);
+    copy = strdup(line);
+    if (!copy)
+        return NULL;
 
+    token = strtok(copy, " \n");
     while (token)
     {
-        tmp = realloc(argv, sizeof(char *) * (i + 2));
-        if (!tmp)
-        {
-            free_args(argv);
-            return (NULL);
-        }
-        argv = tmp;
+        count++;
+        token = strtok(NULL, " \n");
+    }
+    free(copy);
 
+    if (count == 0)
+        return NULL;
+
+    argv = malloc(sizeof(char *) * (count + 1));
+    if (!argv)
+        return NULL;
+
+    token = strtok(line, " \n");
+    while (token)
+    {
         argv[i] = strdup(token);
         if (!argv[i])
         {
             free_args(argv);
-            return (NULL);
+            return NULL;
         }
-
         i++;
         token = strtok(NULL, " \n");
     }
 
     argv[i] = NULL;
-    return (argv);
+    return argv;
 }
