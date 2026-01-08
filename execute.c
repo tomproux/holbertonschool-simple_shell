@@ -25,7 +25,7 @@ int execute_cmd(char **argv)
 
     if (pid == 0)
     {
-        char *path = find_command_path(argv[0]);
+        char *path = _getPATH();
         if (!path)
         {
             fprintf(stderr, "%s: command not found\n", argv[0]);
