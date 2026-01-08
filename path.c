@@ -12,7 +12,7 @@ char *find_command_path(char *command)
     char *full_path;
 
     if (access(command, X_OK) == 0)
-        return strdup(command); /* chemin direct */
+        return strdup(command);
 
     path_env = getenv("PATH");
     if (!path_env)
@@ -44,4 +44,9 @@ char *find_command_path(char *command)
 
     free(path_copy);
     return NULL;
+}
+
+char *_getPATH(void)
+{
+    return (getenv("PATH"));
 }
