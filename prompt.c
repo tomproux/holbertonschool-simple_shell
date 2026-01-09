@@ -1,51 +1,48 @@
 #include "shell.h"
+
 /**
  * read_input - a function that allow us to put argument in input
- * @*line : a pointer on the line
- * @size_t : the lenght of the string
- * Return the line
+ * Return: the line
  */
 char *read_input(void)
 {
-    char *line = NULL;
-    size_t len = 0;
+	char *line = NULL;
+	size_t len = 0;
 
-    if (getline(&line, &len, stdin) == -1)
-    {
-        free(line);
-        return (NULL);
-    }
-    return (line);
+	if (getline(&line, &len, stdin) == -1)
+	{
+		free(line);
+		return (NULL);
+	}
+	return (line);
 }
 
 /**
  * handle_builtins - a function that handle the builtins
- * @i : an input integer
- * Return nothing
+ * @argv : argument table
+ * Return: Always 0 (SUCCESS)
  */
 int handle_builtins(char **argv)
 {
-    int i = 0;
-    extern char **environ;
+	int i = 0;
 
-    if (!argv || !argv[0])
-        return (0);
+	if (!argv || !argv[0])
+		return (0);
 
-    if (strcmp(argv[0], "exit") == 0)
-        exit(0);
+	if (strcmp(argv[0], "exit") == 0)
+		exit(0);
 
-    if (strcmp(argv[0], "env") == 0)
-    {
-        while (environ[i])
-        {
-            write(STDOUT_FILENO, environ[i], strlen(environ[i]));
-            write(STDOUT_FILENO, "\n", 1);
-            i++;
-        }
-        return (1);
-    }
-
-    return (0);
+	if (strcmp(argv[0], "env") == 0)
+	{
+		while (environ[i])
+		{
+		write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
+		}
+		return (1);
+	}
+	return (0);
 }
 
 /**
