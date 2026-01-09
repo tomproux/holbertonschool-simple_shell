@@ -14,6 +14,8 @@ int shell_exit(char **cmd)
 
     free_args(cmd);
     exit(EXIT_SUCCESS);
+
+    return EXIT_SUCCESS;
 }
 
 /**
