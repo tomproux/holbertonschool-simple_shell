@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
- * msgerror - A function that prints command not found.
+ * print_error - A function that prints command not found.
  * @hsh: the name of the shell
  * @line: the command counter
  * @cmd: The pointer to tokenized command
- * @msg: the error messageexit
+ * @msg: the error message
  * Return: Nothing.
  */
 void print_error(char *hsh, int line, char *cmd, char *msg)
