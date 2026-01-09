@@ -7,16 +7,15 @@
 int shell_exit(char **cmd)
 {
     if (!cmd || !cmd[0])
-        return 0;
+        return EXIT_SUCCESS;
 
     if (strcmp(cmd[0], "exit") != 0)
-        return 0;
+        return EXIT_SUCCESS;
 
     free_args(cmd);
     exit(EXIT_SUCCESS);
-
-    return EXIT_SUCCESS;
 }
+
 
 /**
  * free_argv - a function that free the allocated memory
