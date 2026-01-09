@@ -7,7 +7,7 @@
 int shell_exit(char **cmd)
 {
     if (!cmd || !cmd[0])
-        return EXIT_SUCCESS;
+        return EXIT_FAILURE;
 
     if (strcmp(cmd[0], "exit") != 0)
         return EXIT_SUCCESS;
