@@ -128,7 +128,16 @@ write (man 2 write)
 
 # TESTING #
 
+exemple pour la commande 'ls':
 
+    $ ls 
+    AUTHORS  README.md  builtins.c  errors.c  execute.c  exits.c  hsh  hsh.c  man_1_simple_shell  parser.c  path.c  prompt.c  shell.h  utils.c
+    $ /bin/ls       
+    AUTHORS  README.md  builtins.c  errors.c  execute.c  exits.c  hsh  hsh.c  man_1_simple_shell  parser.c  path.c  prompt.c  shell.h  utils.c
+    $ /bin/ls /var
+    backups  cache  crash  lib  local  lock  log  mail  opt  run  snap  spool  tmp
+
+exemple pour la commande '':
 
 # AUTHOR #
 
