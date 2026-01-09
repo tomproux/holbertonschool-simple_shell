@@ -12,8 +12,8 @@ int shell_exit(char **cmd)
     if (strcmp(cmd[0], "exit") != 0)
         return EXIT_SUCCESS;
 
-    free_args(cmd);
     exit(EXIT_SUCCESS);
+    free_args(cmd);
 }
 
 
