@@ -1,20 +1,39 @@
 #include "shell.h"
 /**
- * msgerror - A function that prints message not found.
- * @name: The name of the shell.
- * @cicles: Number of cicles.
- * @command: The pointer to tokenized command.
+ * msgerror - A function that prints command not found.
+ * @hsh: the name of the shell
+ * @line: the command counter
+ * @cmd: The pointer to tokenized command
+ * @msg: the error messageexit
  * Return: Nothing.
  */
-void msgerror(char *name, int cicles, char **command)
+void print_error(char *hsh, int line, char *cmd, char *msg)
 {
-	char c;
+    char num[20];
+    int i = 0, n = line;
 
-	c = cicles + '0';
-	write(STDOUT_FILENO, name, _strlen(name));
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, &c, 1);
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, command[0], _strlen(command[0]));
-	write(STDOUT_FILENO, ": not found\n", 12);
+    write(STDERR_FILENO, hsh, _strlen(hsh));
+    write(STDERR_FILENO, ": ", 2);
+
+    if (line >= 0)
+    {
+        if (n == 0)
+            num[i++] = '0';
+
+        while (n)
+        {
+            num[i++] = (n % 10) + '0';
+            n /= 10;
+        }
+
+        while (--i >= 0)
+            write(STDERR_FILENO, &num[i], 1);
+
+        write(STDERR_FILENO, ": ", 2);
+    }
+
+    write(STDERR_FILENO, cmd, _strlen(cmd));
+    write(STDERR_FILENO, ": ", 2);
+    write(STDERR_FILENO, msg, _strlen(msg));
+    write(STDERR_FILENO, "\n", 1);
 }

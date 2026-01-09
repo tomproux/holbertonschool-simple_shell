@@ -14,7 +14,7 @@
 
 int main(void);
 void display_prompt(void);
-void msgerror(char *name, int cicles, char **command);
+void print_error(char *hsh, int line, char *cmd, char *msg);
 void _EOF(char *buffer);
 char **parse_line(char *line);
 void free_argv(char **argv);
