@@ -71,9 +71,8 @@ char *_strcat(char *dest, char *src)
 
 /**
  * _atoi - a function that convert a string to an integer
- * @i: the input to go through the string
- * @sign: the positive or negative sign
- * Return an integer
+ * @s: the input string
+ * Return: an integer
  */
 int _atoi(char *s)
 {
