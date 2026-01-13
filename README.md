@@ -137,8 +137,6 @@ exemple pour la commande 'ls':
     $ /bin/ls /var
     backups  cache  crash  lib  local  lock  log  mail  opt  run  snap  spool  tmp
 
-exemple pour la commande '':
-
 # AUTHOR #
 
 @ Tom Proux : https://github.com/tomproux
